@@ -1,5 +1,7 @@
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
-import { FaCircleUser } from "react-icons/fa6";
+import { FaCircleUser } from "react-icons/fa"; // Corrected import from fa6 to fa
+import { FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Navbar = () => {
   return (
@@ -16,36 +18,18 @@ const Navbar = () => {
 
           {/* Navigation Links to the Right */}
           <div className="space-x-6 flex items-center">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="text-gray-900 hover:text-green-600 font-medium hover:underline"
             >
-              Inicio
-            </a>
-            <a
-              href="#"
-              className="text-gray-900 hover:text-green-600 font-medium hover:underline"
-            >
-              Nosotros
-            </a>
-            <a
-              href="#"
-              className="text-gray-900 hover:text-green-600 font-medium hover:underline"
-            >
-              Servicios
-            </a>
-            <a
-              href="#"
-              className="text-gray-900 hover:text-green-600 font-medium hover:underline"
-            >
-              Contacto
-            </a>
-            <a href="#" className="text-gray-900 hover:text-green-600">
+              <FaHome className="w-6 h-6" />
+            </Link>
+            <Link to="/profile" className="text-gray-900 hover:text-green-600">
               <FaCircleUser className="w-6 h-6" />
-            </a>
-            <a href="#" className="text-gray-900 hover:text-green-600">
+            </Link>
+            <Link to="/cart" className="text-gray-900 hover:text-green-600">
               <FaShoppingCart className="w-6 h-6" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -56,30 +40,30 @@ const Navbar = () => {
           <div className="flex justify-between items-center py-2">
             {/* Category Links */}
             <div className="flex space-x-8">
-              <a
-                href="#"
+              <Link
+                to="/medicina"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
                 Medicina
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/vitaminas"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
                 Vitaminas y suplementos
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/cuidado-personal"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
                 Cuidado personal
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="/ayuda"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
                 Ayuda
-              </a>
+              </Link>
             </div>
 
             {/* Search Bar */}
@@ -97,4 +81,5 @@ const Navbar = () => {
     </div>
   );
 };
+
 export default Navbar;
