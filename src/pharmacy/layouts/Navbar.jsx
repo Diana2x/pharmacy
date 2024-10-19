@@ -1,5 +1,5 @@
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
-import { FaCircleUser } from "react-icons/fa"; // Corrected import from fa6 to fa
+import { FaCircleUser } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
@@ -24,7 +24,7 @@ const Navbar = () => {
             >
               <FaHome className="w-6 h-6" />
             </Link>
-            <Link to="/profile" className="text-gray-900 hover:text-green-600">
+            <Link to="/Login" className="text-gray-900 hover:text-green-600">
               <FaCircleUser className="w-6 h-6" />
             </Link>
             <Link to="/cart" className="text-gray-900 hover:text-green-600">
