@@ -17,7 +17,7 @@ const HomePage = () => {
             En Farmacias Ciudad del Sol, nos comprometemos a ofrecerte los
             mejores medicamentos, tanto originales como genéricos. Todos
             nuestros productos cumplen con los más altos estándares de calidad y
-            son seleccionados cuidadosamente para tu bienestar.
+            son seleccionados cuidadosamente para tu bienestar. Holaaa
           </p>
         </section>
         {/* Health Products Section */}
