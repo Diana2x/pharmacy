@@ -1,17 +1,24 @@
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { PiPhoneCallFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="sticky top-0 bg-white z-10 shadow-md w-full">
-      <div className="container mx-auto px-4 lg:block">
+      <div className="container mx-auto lg:block">
         <div className="flex justify-between items-center py-4">
           {/* Logo and Title on the Left */}
           <div className="flex items-center space-x-3">
-            <img src="/images/logo.png" alt="logo" width={80} height={80} />
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-green-500 via-yellow-500 to-green-500 text-transparent bg-clip-text">
+            <img
+              src="/images/logo.png"
+              alt="logo"
+              width={60}
+              height={60}
+              className="sm:w-[40] sm:h-[40]"
+            />
+            <h1 className="lg:text-2xl font-bold bg-gradient-to-r from-green-500 via-yellow-500 to-green-500 text-transparent bg-clip-text sm:text-lg">
               Farmacias Ciudad del Sol
             </h1>
           </div>
@@ -24,7 +31,13 @@ const Navbar = () => {
             >
               <FaHome className="w-6 h-6" />
             </Link>
-            <Link to="/Login" className="text-gray-900 hover:text-green-600">
+            <Link
+              to="/contacto"
+              className="text-gray-900 hover:text-green-600 font-medium hover:underline"
+            >
+              <PiPhoneCallFill className="w-6 h-6" />
+            </Link>
+            <Link to="/login" className="text-gray-900 hover:text-green-600">
               <FaCircleUser className="w-6 h-6" />
             </Link>
             <Link to="/cart" className="text-gray-900 hover:text-green-600">
@@ -36,33 +49,27 @@ const Navbar = () => {
 
       {/* Categorias */}
       <div className="bg-gray-100 border-t">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto">
           <div className="flex justify-between items-center py-2">
             {/* Category Links */}
             <div className="flex space-x-8">
               <Link
-                to="/medicina"
+                to="/Medicamentos"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
-                Medicina
+                Medicamentos
               </Link>
               <Link
-                to="/vitaminas"
+                to="/Vitaminas"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
                 Vitaminas y suplementos
               </Link>
               <Link
-                to="/cuidado-personal"
+                to="/Materiales"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
-                Cuidado personal
-              </Link>
-              <Link
-                to="/ayuda"
-                className="text-gray-700 hover:text-green-600 font-medium"
-              >
-                Ayuda
+                Materiales de curación
               </Link>
             </div>
 

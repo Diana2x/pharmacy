@@ -11,11 +11,11 @@ const PharmacyRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/nosotros" element={<AboutUsPage />} />
-      <Route path="/servicios" element={<ServicesPage />} />
       <Route path="/contacto" element={<ContactPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/cart" element={<ShoppingCartPage />} />
+      <Route path="/nosotros" element={<AboutUsPage />} />
+      <Route path="/servicios" element={<ServicesPage />} />
       <Route path="*" element={<Navigate to={"/"} replace />} />
     </Routes>
   );
