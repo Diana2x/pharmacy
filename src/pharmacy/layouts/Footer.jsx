@@ -2,14 +2,6 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between">
-        {/* Logo y Título */}
-        <div className="flex items-center space-x-3 mb-4 md:mb-0">
-          <img src="/images/logo.png" alt="logo" width={80} height={80} />
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-green-500 via-yellow-500 to-green-500 text-transparent bg-clip-text">
-            Farmacias Ciudad del Sol
-          </h1>
-        </div>
-
         {/* Información de Ubicación y Horarios */}
         <div className="flex flex-col text-left">
           <h2 className="text-xl font-semibold">Ubicación</h2>
