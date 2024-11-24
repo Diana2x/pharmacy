@@ -1,7 +1,7 @@
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
-import { PiPhoneCallFill } from "react-icons/pi";
+import { GrContact } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -26,16 +26,10 @@ const Navbar = () => {
           {/* Navigation Links to the Right */}
           <div className="space-x-6 flex items-center">
             <Link
-              to="/"
+              to="/contact"
               className="text-gray-900 hover:text-green-600 font-medium hover:underline"
             >
-              <FaHome className="w-6 h-6" />
-            </Link>
-            <Link
-              to="/contacto"
-              className="text-gray-900 hover:text-green-600 font-medium hover:underline"
-            >
-              <PiPhoneCallFill className="w-6 h-6" />
+              <GrContact className="w-6 h-6" />
             </Link>
             <Link to="/login" className="text-gray-900 hover:text-green-600">
               <FaCircleUser className="w-6 h-6" />
@@ -54,22 +48,46 @@ const Navbar = () => {
             {/* Category Links */}
             <div className="flex space-x-8">
               <Link
-                to="/Medicamentos"
-                className="text-gray-700 hover:text-green-600 font-medium"
+                to="/"
+                className="text-gray-900 hover:text-green-600 font-medium hover:underline"
               >
-                Medicamentos
+                Inicio
               </Link>
               <Link
-                to="/Vitaminas"
+                to="/products"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
-                Vitaminas y suplementos
+                Catálogo de Productos
               </Link>
               <Link
-                to="/Materiales"
+                to="/aboutUs"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
-                Materiales de curación
+                ¿Quiénes Somos?
+              </Link>
+              <Link
+                to="/policies"
+                className="text-gray-700 hover:text-green-600 font-medium"
+              >
+                Políticas
+              </Link>
+              <Link
+                to="/address"
+                className="text-gray-700 hover:text-green-600 font-medium"
+              >
+                Ubicación
+              </Link>
+              <Link
+                to="/faq"
+                className="text-gray-700 hover:text-green-600 font-medium"
+              >
+                Preguntas Frecuentes
+              </Link>
+              <Link
+                to="/contact"
+                className="text-gray-700 hover:text-green-600 font-medium"
+              >
+                Contacto
               </Link>
             </div>
 
