@@ -1,0 +1,154 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Agua Oxigenada",
+      "description": "Antiséptico utilizado para desinfectar heridas y evitar infecciones.",
+      "price": 25,
+      "images": ["/images/Agua_oxigenada.jpg", "/images/Agua_oxigenada_2.jpg"]
+    },
+    {
+      "id": 2,
+      "name": "Alveritin",
+      "description": "Medicamento para tratar alergias e inflamaciones.",
+      "price": 180,
+      "images": ["/images/Alveritin.jpg", "/images/Alveritin_2.jpg"]
+    },
+    {
+      "id": 3,
+      "name": "Autrin",
+      "description": "Suplemento de hierro para combatir la anemia.",
+      "price": 230,
+      "images": ["/images/Autrin.jpg", "/images/Autrin_2.jpg"]
+    },
+    {
+      "id": 4,
+      "name": "Gasa",
+      "description": "Gasa estéril para curaciones y cuidado de heridas.",
+      "price": 15,
+      "images": ["/images/Gasa.jpg", "/images/Gasa_2.jpg"]
+    },
+    {
+      "id": 5,
+      "name": "Bioyetin",
+      "description": "Medicamento inyectable para deficiencias vitamínicas.",
+      "price": 400,
+      "images": ["/images/Bioyetin.jpg", "/images/Bioyetin_2.jpg"]
+    },
+    {
+      "id": 6,
+      "name": "Cinitrapida",
+      "description": "Medicamento para tratar problemas gástricos.",
+      "price": 120,
+      "images": ["/images/Cinitrapida.jpg", "/images/Cinitrapida_2.jpg"]
+    },
+    {
+      "id": 7,
+      "name": "Emagliflozina",
+      "description": "Medicamento para controlar la diabetes tipo 2.",
+      "price": 950,
+      "images": ["/images/Emagliflozina.jpg", "/images/Emagliflozina_2.jpg"]
+    },
+    {
+      "id": 8,
+      "name": "Insulina",
+      "description": "Hormona para el control de la glucosa en la sangre.",
+      "price": 900,
+      "images": ["/images/Insulina.jpg", "/images/Insulina_2.jpg"]
+    },
+    {
+      "id": 9,
+      "name": "Jeringa de Insulina",
+      "description": "Jeringas especializadas para la administración de insulina.",
+      "price": 50,
+      "images": [
+        "/images/Jeringa_Insulina.jpg",
+        "/images/Jeringa_Insulina_2.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Lantus",
+      "description": "Insulina de acción prolongada para controlar la diabetes.",
+      "price": 1200,
+      "images": ["/images/Lantus.jpg", "/images/Lantus_2.jpg"]
+    },
+    {
+      "id": 11,
+      "name": "Magnesio",
+      "description": "Suplemento mineral esencial para la salud ósea y muscular.",
+      "price": 80,
+      "images": ["/images/Magnesio.jpg", "/images/Magnesio_2.jpg"]
+    },
+    {
+      "id": 12,
+      "name": "Nifedipino",
+      "description": "Medicamento para el control de la presión arterial.",
+      "price": 60,
+      "images": ["/images/Nidedipino.jpg", "/images/Nidedipino_2.jpg"]
+    },
+    {
+      "id": 13,
+      "name": "Paracetamol",
+      "description": "Analgésico y antipirético para aliviar el dolor y la fiebre.",
+      "price": 20,
+      "images": ["/images/Paracetamol.jpg", "/images/Paracetamol_2.jpg"]
+    },
+    {
+      "id": 14,
+      "name": "Riopan",
+      "description": "Medicamento antiácido para el tratamiento de la acidez estomacal.",
+      "price": 95,
+      "images": ["/images/Riopan.jpg", "/images/Riopan_2.jpg"]
+    },
+    {
+      "id": 15,
+      "name": "Rosuvastatina",
+      "description": "Medicamento para reducir el colesterol y prevenir enfermedades cardiovasculares.",
+      "price": 400,
+      "images": ["/images/Rosuvastatina.jpg", "/images/Rosuvastatina_2.jpg"]
+    },
+    {
+      "id": 16,
+      "name": "Sinuberase",
+      "description": "Sinuberase ofrece la concentración óptima de probióticos que tu cuerpo necesita para restaurar el equilibrio de la flora intestinal.",
+      "price": 750,
+      "images": ["/images/Sinuberase.jpg", "/images/Sinuberase_2.jpg"]
+    },
+    {
+      "id": 17,
+      "name": "Tabcin",
+      "description": "Medicamento para aliviar síntomas de resfriado común.",
+      "price": 40,
+      "images": ["/images/Tabcin.jpg", "/images/Tabcin_2.jpg"]
+    },
+    {
+      "id": 18,
+      "name": "Tamablan",
+      "description": "Medicamento para tratar infecciones respiratorias.",
+      "price": 350,
+      "images": ["/images/Tamablan.jpg", "/images/Tamablan_2.jpg"]
+    },
+    {
+      "id": 19,
+      "name": "Victoza",
+      "description": "Medicamento para controlar la diabetes tipo 2 y apoyar la pérdida de peso.",
+      "price": 1800,
+      "images": ["/images/Victoza.jpg", "/images/Victoza_2.jpg"]
+    },
+    {
+      "id": 20,
+      "name": "Vitamina D3",
+      "description": "Suplemento esencial para la salud ósea y el sistema inmune.",
+      "price": 150,
+      "images": ["/images/VitaminaD3.jpg", "/images/VitaminaD3_2.jpg"]
+    },
+    {
+      "id": 21,
+      "name": "XigDuo",
+      "description": "Medicamento combinado para el tratamiento de la diabetes tipo 2.",
+      "price": 1600,
+      "images": ["/images/XigDuo2.jpg", "/images/XigDuo2_2.jpg"]
+    }
+  ]
+}

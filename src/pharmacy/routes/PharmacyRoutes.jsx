@@ -1,21 +1,27 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../pages/home/HomePage";
 import AboutUsPage from "../pages/aboutUs/AboutUs";
-import ServicesPage from "../pages/services/Services";
 import ContactPage from "../pages/contact/Contact";
 import LoginPage from "../pages/login/Login";
 import ShoppingCartPage from "../pages/shoppingCart/ShoppingCart";
+import ProductsPage from "../pages/products/Products";
+import PolicyPage from "../pages/policies/Policies";
+import AddressPage from "../pages/address/Address";
+import FaqPage from "../pages/faq/Faq";
 import { Navigate } from "react-router-dom";
 
 const PharmacyRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/contacto" element={<ContactPage />} />
+      <Route path="/contact" element={<ContactPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/cart" element={<ShoppingCartPage />} />
-      <Route path="/nosotros" element={<AboutUsPage />} />
-      <Route path="/servicios" element={<ServicesPage />} />
+      <Route path="/products" element={<ProductsPage />} />
+      <Route path="/aboutUs" element={<AboutUsPage />} />
+      <Route path="/policies" element={<PolicyPage />} />
+      <Route path="/address" element={<AddressPage />} />
+      <Route path="/faq" element={<FaqPage />} />
       <Route path="*" element={<Navigate to={"/"} replace />} />
     </Routes>
   );
