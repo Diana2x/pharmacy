@@ -66,6 +66,12 @@ const Navbar = () => {
                 ¿Quiénes Somos?
               </Link>
               <Link
+                to="/mission"
+                className="text-gray-700 hover:text-green-600 font-medium"
+              >
+                 Misión y Visión
+              </Link>
+              <Link
                 to="/policies"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
