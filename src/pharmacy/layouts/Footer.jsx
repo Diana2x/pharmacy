@@ -33,7 +33,7 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/contacto" className="hover:underline">
+              <a href="/contact" className="hover:underline">
                 Contacto
               </a>
             </li>
@@ -45,12 +45,12 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Empresa</h3>
           <ul className="space-y-2">
             <li>
-              <a href="/quienes-somos" className="hover:underline">
+              <a href="/aboutUs" className="hover:underline">
                 ¿Quiénes somos?
               </a>
             </li>
             <li>
-              <a href="/mision-vision" className="hover:underline">
+              <a href="/MissionVision" className="hover:underline">
                 Misión y Visión
               </a>
             </li>
@@ -62,12 +62,12 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Políticas</h3>
           <ul className="space-y-2">
             <li>
-              <a href="/politicas-de-calidad" className="hover:underline">
+              <a href="/policies" className="hover:underline">
                 Políticas de Calidad
               </a>
             </li>
             <li>
-              <a href="/aviso-de-privacidad" className="hover:underline">
+              <a href="/policies" className="hover:underline">
                 Aviso de Privacidad
               </a>
             </li>
