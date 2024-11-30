@@ -47,13 +47,18 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Calidad Banner */}
-      <div className="w-full mx-auto flex flex-col items-center justify-center container mt-12">
-        <img
-          src="/images/saludbanner.png"
-          alt="Salud Banner"
-          className="w-full h-auto object-cover rounded-lg"
-        />
+      <div className="flex justify-center items-center mb-6 ">
+        <video
+          className="rounded-lg shadow-lg border-green-500 border-4 "
+          width="864"
+          height="480"
+          controls
+          loop
+          poster="/images/welcomeThumb.png"
+        >
+          <source src="/video/welcome.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
       </div>
 
       {/* lista de información */}
@@ -100,6 +105,15 @@ const HomePage = () => {
             </p>
           </li>
         </ul>
+      </div>
+
+      {/* Calidad Banner */}
+      <div className="w-full mx-auto flex flex-col items-center justify-center container mt-12">
+        <img
+          src="/images/saludbanner.png"
+          alt="Salud Banner"
+          className="w-full h-auto object-cover rounded-lg"
+        />
       </div>
     </div>
   );
