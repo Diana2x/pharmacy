@@ -8,7 +8,8 @@ import ProductsPage from "../pages/products/Products";
 import PolicyPage from "../pages/policies/Policies";
 import AddressPage from "../pages/address/Address";
 import FaqPage from "../pages/faq/Faq";
-import MissionVision from "../pages/missionVision/MissionVision"
+import MissionVision from "../pages/missionVision/MissionVision";
+import ProductDetail from "../components/ProductDetail";
 import { Navigate } from "react-router-dom";
 
 const PharmacyRoutes = () => {
@@ -23,7 +24,10 @@ const PharmacyRoutes = () => {
       <Route path="/policies" element={<PolicyPage />} />
       <Route path="/address" element={<AddressPage />} />
       <Route path="/faq" element={<FaqPage />} />
-      <Route path="/mission" element={<MissionVision/>} />
+      <Route path="/mission" element={<MissionVision />} />
+      {/* Product detail route should be placed before the fallback route */}
+      <Route path="/product/:id" element={<ProductDetail />} />
+      {/* Fallback route */}
       <Route path="*" element={<Navigate to={"/"} replace />} />
     </Routes>
   );
