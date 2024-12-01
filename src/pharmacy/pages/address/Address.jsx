@@ -6,7 +6,7 @@ const Address = () => {
         className="bg-cover bg-center h-[450px]"
         style={{
           backgroundImage:
-            "url('https://img.freepik.com/foto-gratis/vista-cerca-mano-farmaceutico-tomando-caja-medicina-estante-farmacia_342744-320.jpg?t=st=1732913940~exp=1732917540~hmac=2ba150849ebb3a79238d02d3baa01e36f5b1464d8faed7ec6556650605fd4f4f&w=1380')",
+            "url('https://www.visitadoramedicos.com/images/Articulos/GettyImages.jpg')",
         }}
       ></section>
 
@@ -30,25 +30,31 @@ const Address = () => {
           {/* Contact Section */}
           <div className="flex flex-col gap-4 bg-green-50 p-4 rounded-lg shadow-md border border-green-300">
             <div>
-              <h4 className="text-lg font-semibold text-black-700 mb-2">Dirección:</h4>
+              <h4 className="text-lg font-semibold text-black-700 mb-2">
+                Dirección:
+              </h4>
               <p className="text-black-600">
                 Av Xochitl 311, Prados Tepeyac, 45050 Zapopan, Jal., México
               </p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-black-700 mb-2">Horario:</h4>
-              <p className="text-black-600">Lunes a Viernes: 9:00 AM - 8:00 PM</p>
+              <h4 className="text-lg font-semibold text-black-700 mb-2">
+                Horario:
+              </h4>
+              <p className="text-black-600">
+                Lunes a Viernes: 9:00 AM - 8:00 PM
+              </p>
               <p className="text-black-600">Sábados: 10:00 AM - 6:00 PM</p>
               <p className="text-black-600">Domingos: Cerrado</p>
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-Black-700 mb-2">Contacto:</h4>
+              <h4 className="text-lg font-semibold text-Black-700 mb-2">
+                Contacto:
+              </h4>
               <p className="text-black-600">Teléfono: (33) 3818 1818</p>
               <p className="text-black-600">
                 Email:{" "}
-                <a
-                  className="text-blue-500 hover:underline"
-                >
+                <a className="text-blue-500 hover:underline">
                   farmaciasdelsol@gmail.com
                 </a>
               </p>
