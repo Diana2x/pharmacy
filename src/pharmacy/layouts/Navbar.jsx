@@ -69,7 +69,7 @@ const Navbar = () => {
                 to="/mission"
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
-                 Misión y Visión
+                Misión y Visión
               </Link>
               <Link
                 to="/policies"
