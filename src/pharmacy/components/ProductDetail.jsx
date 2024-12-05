@@ -2,11 +2,13 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard"; // Asegúrate de que esta ruta sea correcta
 
+const { VITE_API_URL } = import.meta.env;
+
 const ProductDetail = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(`${VITE_API_URL}/products`)
       .then((response) => response.json())
       .then((data) => setProducts(data.slice(0, 5))) // Solo muestra los primeros 5 productos
       .catch((error) => console.error("Error fetching products:", error));
@@ -23,7 +25,7 @@ const ProductDetail = () => {
       setError(null);
 
       try {
-        const response = await fetch(`http://localhost:5000/products/${id}`);
+        const response = await fetch(`${VITE_API_URL}/products/${id}`);
         if (!response.ok) {
           throw new Error("Product not found or failed to fetch.");
         }

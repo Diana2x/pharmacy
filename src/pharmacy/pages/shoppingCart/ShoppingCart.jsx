@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FaShippingFast, FaCreditCard } from "react-icons/fa"; // Importar íconos
 
+const { VITE_API_URL } = import.meta.env;
+
 const ShoppingCart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [shippingAddress, setShippingAddress] = useState({
@@ -20,7 +22,7 @@ const ShoppingCart = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(`${VITE_API_URL}/products`)
       .then((response) => response.json())
       .then((data) => {
         const items = data.slice(0, 2).map((item) => ({

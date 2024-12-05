@@ -7,12 +7,14 @@ import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 
+const { VITE_API_URL } = import.meta.env;
+
 const HomePage = () => {
   const [products, setProducts] = useState([]);
 
   // Fetch de productos
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(`${VITE_API_URL}/products`)
       .then((response) => response.json())
       .then((data) => setProducts(data.slice(0, 5)))
       .catch((error) => console.error("Error fetching products:", error));
