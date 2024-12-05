@@ -1,0 +1,15 @@
+FROM node:18
+WORKDIR /app
+
+# Instalar dependencias de JSON Server
+COPY package*.json ./
+RUN npm install
+
+# Copiar el código fuente
+COPY . .
+
+# Comando para iniciar JSON Server
+CMD ["npm", "run", "server"]
+
+# Exponer el puerto 3000 para el backend
+EXPOSE 3000
