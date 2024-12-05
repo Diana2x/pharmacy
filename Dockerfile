@@ -4,6 +4,10 @@ WORKDIR /app
 
 # Instalar dependencias
 COPY package*.json ./
+
+COPY .env.production ./
+
+
 RUN npm install
 
 # Copiar el código fuente y construir el proyecto
