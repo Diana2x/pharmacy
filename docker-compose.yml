@@ -6,15 +6,23 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80" # El frontend será accesible en el puerto 80
+      - "80:80"
     depends_on:
       - backend
+    networks:
+      - app-network
 
   backend:
     build:
       context: .
       dockerfile: Dockerfile.backend
     ports:
-      - "3000:3000" # El backend será accesible en el puerto 3000
+      - "5000:5000"
     volumes:
-      - ./db.json:/app/db.json # Asegurar que la base de datos JSON sea persistente
+      - ./db.json:/app/db.json
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

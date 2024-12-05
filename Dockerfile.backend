@@ -1,15 +1,21 @@
+# Usa una imagen base de Node.js
 FROM node:18
+
+# Configurar el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Instalar dependencias de JSON Server
+# Copiar los archivos necesarios para instalar dependencias
 COPY package*.json ./
+
+# Instalar dependencias
 RUN npm install
 
-# Copiar el código fuente
+# Copiar el resto del código al contenedor
 COPY . .
 
-# Comando para iniciar JSON Server
+# Exponer el puerto donde correrá el servidor
+EXPOSE 5000
+
+# Ejecutar el script "server" para iniciar JSON Server
 CMD ["npm", "run", "server"]
 
-# Exponer el puerto 3000 para el backend
-EXPOSE 3000
