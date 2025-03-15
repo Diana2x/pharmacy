@@ -150,5 +150,12 @@
       "price": 1600,
       "images": ["/images/XigDuo2.jpg", "/images/XigDuo2_2.jpg"]
     }
+    {
+      "id": 22,
+      "name": "XigDuo",
+      "description": "Medicamento combinado para el tratamiento de la diabetes tipo 2.",
+      "price": 1860,
+      "images": ["/images/XigDuo2.jpg", "/images/XigDuo2_2.jpg"]
+    }
   ]
 }
