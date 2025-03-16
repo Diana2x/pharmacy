@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard";
-
+import { getProducts } from "@/api/products/apiProducts";
 const { VITE_API_URL } = import.meta.env;
 
 const Products = () => {
@@ -14,8 +14,7 @@ const Products = () => {
 
   // Fetch products
   useEffect(() => {
-    fetch(`${VITE_API_URL}/products`)
-      .then((response) => response.json())
+    getProducts()
       .then((data) => {
         setProducts(data);
         setFilteredProducts(data);

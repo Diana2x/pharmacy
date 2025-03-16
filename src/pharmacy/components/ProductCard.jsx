@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import StarRating from "./StarRating";
 
 const ProductCard = ({ product }) => {
   const settings = {
@@ -35,8 +36,13 @@ const ProductCard = ({ product }) => {
         <h2 className="text-xl font-semibold text-gray-800">{product.name}</h2>
         <p className="text-gray-600 text-sm mt-24">{product.description}</p>
         <p className="text-lg font-bold text-green-600 mt-4">
-          ${product.price.toFixed(2)} MXN
+          ${product.price.toString()} MXN
         </p>
+        <StarRating
+          averageRating={product.averageRating}
+          totalReviews={product.totalReviews}
+          productId={product.id}
+        />
       </div>
 
       {/* Product Actions */}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ImageGalleryComponent from "../../components/ImageGalleryComponent";
 import ProductCard from "../../components/ProductCard";
 import { GrNotes } from "react-icons/gr";
@@ -8,16 +8,16 @@ import { IoChatboxEllipses } from "react-icons/io5";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 
 const { VITE_API_URL } = import.meta.env;
+import { getProducts } from "@/api/products/apiProducts";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
 
   // Fetch de productos
   useEffect(() => {
-    fetch(`${VITE_API_URL}/products`)
-      .then((response) => response.json())
+    getProducts()
       .then((data) => setProducts(data.slice(0, 5)))
-      .catch((error) => console.error("Error fetching products:", error));
+      .catch((error) => console.error(error));
   }, []);
 
   return (
