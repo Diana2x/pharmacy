@@ -23,7 +23,7 @@ const Navbar = () => {
             </h1>
           </div>
 
-          {/* Navigation Links to the Right */}
+          {/* Navigation Icons to the Right */}
           <div className="space-x-6 flex items-center">
             <Link
               to="/contact"
@@ -41,7 +41,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Categorias */}
+      {/* Categorías */}
       <div className="bg-gray-100 border-t">
         <div className="container mx-auto">
           <div className="flex justify-between items-center py-2">
@@ -94,6 +94,12 @@ const Navbar = () => {
                 className="text-gray-700 hover:text-green-600 font-medium"
               >
                 Contacto
+              </Link>
+              <Link
+                to="/forum"
+                className="text-gray-700 hover:text-green-600 font-medium"
+              >
+                Foro
               </Link>
             </div>
 
