@@ -14,9 +14,9 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 max-w-sm border border-gray-200">
+    <div className="bg-white shadow-md rounded-lg p-4 max-w-full sm:max-w-sm border border-gray-200">
       {/* Product Carousel */}
-      <div className="relative w-full h-48 mb-4">
+      <div className="relative w-full h-48 sm:h-60 lg:h-72 mb-4">
         <Slider {...settings}>
           {product.images &&
             product.images.map((image, index) => (
@@ -32,9 +32,13 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Product Info */}
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold text-gray-800">{product.name}</h2>
-        <p className="text-gray-600 text-sm mt-24">{product.description}</p>
+      <div className="mt-4 sm:mt-6">
+        <h2 className="text-xl font-semibold text-gray-800 truncate">
+          {product.name}
+        </h2>
+        <p className="text-gray-600 text-sm mt-2 line-clamp-3">
+          {product.description}
+        </p>
         <p className="text-lg font-bold text-green-600 mt-4">
           ${product.price.toString()} MXN
         </p>
@@ -49,11 +53,11 @@ const ProductCard = ({ product }) => {
       <div className="flex justify-between items-center mt-4">
         <Link
           to={`/product/${product.id}`}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 text-sm sm:text-base"
         >
           Ver más
         </Link>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm sm:text-base">
           Añadir al carrito
         </button>
       </div>

@@ -6,12 +6,18 @@ import { ChatProvider } from "../context/ChatContext";
 
 const PharmacyLayout = () => {
   return (
-    <div className="flex h-full flex-col w-full">
+    <div className="flex flex-col min-h-screen w-full">
       <Navbar />
-      <Outlet />
+
+      {/* Content will grow and push the footer down */}
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+
       <ChatProvider>
-      <ChatModal />
+        <ChatModal />
       </ChatProvider>
+
       <Footer />
     </div>
   );
