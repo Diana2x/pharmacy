@@ -11,6 +11,7 @@ import FaqPage from "../pages/faq/Faq";
 import MissionVision from "../pages/missionVision/MissionVision";
 import ProductDetail from "../components/ProductDetail";
 import { Navigate } from "react-router-dom";
+import ProductReviews from "../pages/products/ProductReviews";
 
 const PharmacyRoutes = () => {
   return (
@@ -27,6 +28,7 @@ const PharmacyRoutes = () => {
       <Route path="/mission" element={<MissionVision />} />
       {/* Product detail route should be placed before the fallback route */}
       <Route path="/product/:id" element={<ProductDetail />} />
+      <Route path="/product/:id/reviews" element={<ProductReviews />} />
       {/* Fallback route */}
       <Route path="*" element={<Navigate to={"/"} replace />} />
     </Routes>

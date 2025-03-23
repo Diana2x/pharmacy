@@ -1,23 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import ProductCard from "./ProductCard"; // Asegúrate de que esta ruta sea correcta
-
-const { VITE_API_URL } = import.meta.env;
+import ProductCard from "./ProductCard";
+import { getProducts, getProductById } from "../../api/products/apiProducts";
+import StarRating from "./StarRating";
 
 const ProductDetail = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch(`${VITE_API_URL}/products`)
-      .then((response) => response.json())
-      .then((data) => setProducts(data.slice(0, 5))) // Solo muestra los primeros 5 productos
-      .catch((error) => console.error("Error fetching products:", error));
-  }, []);
-
-  const { id } = useParams();
+  const { id } = useParams(); // Get the product ID from the URL params
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Fetch related products (first 5)
+    getProducts()
+      .then((data) => setProducts(data.slice(0, 5)))
+      .catch((error) => console.error("Error fetching products:", error));
+  }, []);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -25,12 +24,11 @@ const ProductDetail = () => {
       setError(null);
 
       try {
-        const response = await fetch(`${VITE_API_URL}/products/${id}`);
-        if (!response.ok) {
-          throw new Error("Product not found or failed to fetch.");
+        const productData = await getProductById(id);
+        if (!productData) {
+          throw new Error("Producto no encontrado");
         }
-        const data = await response.json();
-        setProduct(data);
+        setProduct(productData);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -38,7 +36,7 @@ const ProductDetail = () => {
       }
     };
 
-    fetchProduct();
+    if (id) fetchProduct();
   }, [id]);
 
   if (loading) {
@@ -75,27 +73,12 @@ const ProductDetail = () => {
             <h1 className="text-3xl font-semibold text-gray-800 mb-4">
               {product.name}
             </h1>
+            <StarRating
+              averageRating={product.averageRating}
+              totalReviews={product.totalReviews}
+              productId={product.id}
+            />
             <p className="text-gray-600 mb-4">{product.description}</p>
-
-            <div className="flex items-center mb-4">
-              {[...Array(5)].map((_, index) => (
-                <svg
-                  key={index}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill={index < 4 ? "yellow" : "none"}
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 17.27l4.18 2.73-1.64-5.03 4.12-3.73-5.19-.42L12 2 10.53 11.82l-5.19.42 4.12 3.73-1.64 5.03L12 17.27z"
-                  />
-                </svg>
-              ))}
-            </div>
 
             <div className="text-xl font-bold text-green-600 mb-6">
               Precio: ${product.price}
@@ -111,11 +94,12 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+
       <div className="w-full mx-auto flex flex-col items-center container mt-6">
         <h2 className="text-3xl font-bold text-green-600 mb-6 text-left border-b-4 border-green-500 pb-2">
           Otros clientes también compraron
         </h2>
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 w-full">
+        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 w-full">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -3,49 +3,44 @@ import globals from "globals";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import importPlugin from "eslint-plugin-import"; // Asegura que esté importado
+import babelParser from "@babel/eslint-parser"; // Importa el parser correctamente
 
 export default [
-  { ignores: ["dist"] },
   {
-    files: ["*/.{js,jsx}"], // Coincide con todos los archivos JS y JSX
+    ignores: ["dist"],
+  },
+  {
+    files: ["**/*.{js,jsx}"],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: "latest",
+      sourceType: "module",
       globals: globals.browser,
+      parser: babelParser,
       parserOptions: {
-        ecmaVersion: "latest",
-        ecmaFeatures: { jsx: true },
-        sourceType: "module",
+        requireConfigFile: false,
+        babelOptions: {
+          presets: ["@babel/preset-react"],
+        },
       },
     },
-    extends: [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:import/errors", // Asegura que las configuraciones del plugin de import estén aquí
-      "plugin:import/warnings",
-    ],
-    settings: { react: { version: "18.3" } },
-    plugins: [
-      "react", // Aquí como array
-      "react-hooks",
-      "react-refresh",
-      "import",
-    ],
+    plugins: {
+      react,
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
     rules: {
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
-      ...react.configs["jsx-runtime"].rules,
       ...reactHooks.configs.recommended.rules,
-      "import/named": "error", // Reglas que deben marcar error
-      "import/default": "error", // Verifica la exportación por defecto
-      "import/namespace": "error", // Verifica la exportación de espacio de nombres
-      "import/no-unresolved": "error", // Marca error si no se encuentra el módulo
-      "react/jsx-no-target-blank": "off",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      "react-refresh/only-export-components": "off",
       "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "no-unused-vars": "off",
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
   },
 ];

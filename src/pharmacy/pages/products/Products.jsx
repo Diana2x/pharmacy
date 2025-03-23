@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard";
-
+import { getProducts } from "@/api/products/apiProducts";
 const { VITE_API_URL } = import.meta.env;
 
 const Products = () => {
@@ -9,13 +9,12 @@ const Products = () => {
   const [filters, setFilters] = useState({
     name: "",
     minPrice: 0,
-    maxPrice: 1000,
+    maxPrice: 5000,
   });
 
   // Fetch products
   useEffect(() => {
-    fetch(`${VITE_API_URL}/products`)
-      .then((response) => response.json())
+    getProducts()
       .then((data) => {
         setProducts(data);
         setFilteredProducts(data);
@@ -93,7 +92,7 @@ const Products = () => {
         </div>
         <button
           className="w-full bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
-          onClick={() => setFilters({ name: "", minPrice: 0, maxPrice: 1000 })}
+          onClick={() => setFilters({ name: "", minPrice: 0, maxPrice: 5000 })}
         >
           Limpiar filtros
         </button>

@@ -1,6 +1,5 @@
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
-import { FaHome } from "react-icons/fa";
 import { GrContact } from "react-icons/gr";
 import { Link } from "react-router-dom";
 

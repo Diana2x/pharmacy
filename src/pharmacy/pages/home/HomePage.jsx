@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ImageGalleryComponent from "../../components/ImageGalleryComponent";
 import ProductCard from "../../components/ProductCard";
 import { GrNotes } from "react-icons/gr";
@@ -8,22 +8,22 @@ import { IoChatboxEllipses } from "react-icons/io5";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 
 const { VITE_API_URL } = import.meta.env;
+import { getProducts } from "@/api/products/apiProducts";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
 
   // Fetch de productos
   useEffect(() => {
-    fetch(`${VITE_API_URL}/products`)
-      .then((response) => response.json())
-      .then((data) => setProducts(data.slice(0, 5)))
-      .catch((error) => console.error("Error fetching products:", error));
+    getProducts()
+      .then((data) => setProducts(data.slice(0, 4)))
+      .catch((error) => console.error(error));
   }, []);
 
   return (
     <div className="flex flex-col w-full p-4 gap-6">
       {/* Contenedor flex para la galería de imágenes y el banner de salud */}
-      <div className="flex items-center justify-center gap-6 mx-auto sm:flex-col lg:flex-row md:flex-col container m-6 max-h-[317px]">
+      <div className="flex flex-col items-center justify-center gap-6 mx-auto sm:flex-col lg:flex-row md:flex-col container m-6 max-h-[317px]">
         {/* Image Gallery */}
         <div className="flex items-center justify-center w-full h-full">
           <ImageGalleryComponent />
@@ -42,21 +42,23 @@ const HomePage = () => {
         <h2 className="text-3xl font-bold text-green-600 mb-6 text-center border-b-4 border-green-500 pb-2">
           Productos Destacados
         </h2>
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 w-full">
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
 
-      <div className="flex justify-center items-center mb-6 ">
+      {/* Video Section */}
+      <div className="flex justify-center items-center mb-6">
         <video
-          className="rounded-lg shadow-lg border-green-500 border-4 "
-          width="864"
+          className="rounded-lg shadow-lg border-green-500 border-4"
+          width="100%"
           height="480"
           controls
           loop
           poster="/images/welcomeThumb.png"
+          style={{ maxWidth: "864px" }} // Use the style attribute for maxWidth
         >
           <source src="/video/welcome.mp4" type="video/mp4" />
           Tu navegador no soporta el elemento de video.
@@ -65,7 +67,7 @@ const HomePage = () => {
 
       {/* lista de información */}
       <div className="w-full mx-auto flex items-center justify-center container mt-12">
-        <ul className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 w-full">
+        <ul className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 w-full">
           {/* Item 1 */}
           <li className="flex flex-col items-center text-center">
             <GrNotes className="w-16 h-16 mb-2" />

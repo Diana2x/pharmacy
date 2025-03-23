@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { FaMapMarkerAlt, FaPhoneAlt,FaEnvelope } from "react-icons/fa";
-import { FaFacebook, FaTwitter, FaInstagram,FaXTwitter } from "react-icons/fa6";
+import React from "react";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
   return (
     <div className="flex flex-col w-full p-4 gap-6 bg-gray-100">
@@ -16,9 +16,12 @@ const Contact = () => {
               <FaMapMarkerAlt />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-black-800">CORPORATIVO</h3>
+              <h3 className="text-lg font-semibold text-black-800">
+                CORPORATIVO
+              </h3>
               <p className="text-base text-green-700">
-                Avenida Moctezuma #456, Colonia Cd del Sol, Zapopan, Jalisco, C.P. 45050
+                Avenida Moctezuma #456, Colonia Cd del Sol, Zapopan, Jalisco,
+                C.P. 45050
               </p>
             </div>
           </div>
@@ -29,9 +32,12 @@ const Contact = () => {
               <FaPhoneAlt />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-black-800">TELÉFONOS</h3>
+              <h3 className="text-lg font-semibold text-black-800">
+                TELÉFONOS
+              </h3>
               <p className="text-base text-green-700">
-                (33) 3818 1818<br />
+                (33) 3818 1818
+                <br />
                 (83) FARMACIA (32762242)
               </p>
             </div>
@@ -39,7 +45,9 @@ const Contact = () => {
 
           {/* SECCION DE REDES SOCIALES CON ICONOS */}
           <div className="info-box flex flex-col gap-2 bg-green-50 p-4 rounded-md shadow w-full">
-            <h3 className="text-lg font-semibold text-black-800">REDES SOCIALES</h3>
+            <h3 className="text-lg font-semibold text-black-800">
+              REDES SOCIALES
+            </h3>
             <div className="flex gap-4 items-center">
               <a
                 href="https://facebook.com"
@@ -74,7 +82,9 @@ const Contact = () => {
               <FaEnvelope />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-black-800">CORREO ELECTRÓNICO</h3>
+              <h3 className="text-lg font-semibold text-black-800">
+                CORREO ELECTRÓNICO
+              </h3>
               <p className="text-base text-gray-700">
                 <a
                   href="mailto:farmaciadelsol@gmail.com"
