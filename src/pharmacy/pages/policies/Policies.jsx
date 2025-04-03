@@ -22,7 +22,7 @@ const Policies = () => {
       {/* Grid de tres columnas */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Políticas de calidad */}
-        <div className="p-6 border rounded-lg shadow-md bg-white">
+        <div className="p-6 border rounded-lg shadow-md bg-white animate-fade-in-up">
           <h2 className="text-2xl font-semibold text-[#80CC28] mt-4 mb-6 text-center">
             Políticas de calidad
           </h2>
@@ -63,7 +63,7 @@ const Policies = () => {
         </div>
 
         {/* Políticas de privacidad */}
-        <div className="p-6 border rounded-lg shadow-md bg-white">
+        <div className="p-6 border rounded-lg shadow-md bg-white animate-fade-in-up">
           <h2 className="text-2xl font-semibold text-[#80CC28] mt-4 mb-6 text-center">
             Políticas de privacidad
           </h2>
@@ -126,7 +126,7 @@ const Policies = () => {
         </div>
 
         {/* Términos de uso */}
-        <div className="p-6 border rounded-lg shadow-md bg-white">
+        <div className="p-6 border rounded-lg shadow-md bg-white animate-fade-in-up">
           <h2 className="text-2xl font-semibold text-[#80CC28] mt-4 mb-6 text-center">
             Términos de uso
           </h2>

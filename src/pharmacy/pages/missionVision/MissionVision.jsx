@@ -6,7 +6,7 @@ const MissionVision = () => {
         </div>
       
         {/* Sección Misión */}
-        <div className="relative flex items-center bg-[#FCE06F] rounded-r-full w-2/3 mr-auto p-6">
+        <div className="relative flex items-center bg-[#FCE06F] rounded-r-full w-2/3 mr-auto p-6 animate-fade-in-up">
           <div className="flex flex-col justify-center">
             <h2 className="text-[#414141] text-2xl font-semibold mb-4 text-center">Misión</h2>
             <p className="text-gray-800 text-center">
@@ -24,7 +24,7 @@ const MissionVision = () => {
         </div>
       
         {/* Sección Visión */}
-        <div className="relative flex items-center bg-[#80CC28] rounded-l-full w-2/3 ml-auto p-6">
+        <div className="relative flex items-center bg-[#80CC28] rounded-l-full w-2/3 ml-auto p-6 animate-fade-in-up">
           <img
             src="/images/vision.png"
             alt="Visión"
