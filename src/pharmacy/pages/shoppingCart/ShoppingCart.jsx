@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaShippingFast, FaCreditCard } from "react-icons/fa"; // Importar íconos
-
-const { VITE_API_URL } = import.meta.env;
+import { getProducts } from "@/api/products/apiProducts";
 
 const ShoppingCart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -22,20 +21,18 @@ const ShoppingCart = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`${VITE_API_URL}/products`)
-      .then((response) => response.json())
+    getProducts()
       .then((data) => {
         const items = data.slice(0, 2).map((item) => ({
           ...item,
           quantity: item.quantity || 1,
         }));
         setCartItems(items);
-        setIsLoading(false);
       })
       .catch(() => {
         setError("No se pudieron cargar los productos");
-        setIsLoading(false);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const handleIncreaseQuantity = (id) => {
@@ -54,6 +51,9 @@ const ShoppingCart = () => {
     setCartItems(updatedItems);
   };
 
+
+
+  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     if (name in shippingAddress) {
