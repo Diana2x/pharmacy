@@ -94,6 +94,12 @@ const Navbar = () => {
               >
                 Contacto
               </Link>
+              <Link
+                to="/forum"
+                className="text-gray-700 hover:text-green-600 font-medium"
+              >
+                Foro
+              </Link>
             </div>
 
             {/* Search Bar */}
