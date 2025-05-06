@@ -14,6 +14,8 @@ import { Navigate } from "react-router-dom";
 import ProductReviews from "../pages/products/ProductReviews";
 import Forum from "../pages/forum/forum";
 import RegisterPage from "../pages/login/Register";
+import AdminPage from "../pages/admin/AdminPage";
+import { PrivateRoute } from "../components/PrivateRoute";
 
 const PharmacyRoutes = () => {
   return (
@@ -30,6 +32,14 @@ const PharmacyRoutes = () => {
       <Route path="/faq" element={<FaqPage />} />
       <Route path="/mission" element={<MissionVision />} />
       <Route path="/forum" element={<Forum />} />
+      
+      {/* Protected Admin Route - requires admin privileges */}
+      <Route path="/admin" element={
+        <PrivateRoute adminOnly={true}>
+          <AdminPage />
+        </PrivateRoute>
+      } />
+      
       {/* Product detail route should be placed before the fallback route */}
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/product/:id/reviews" element={<ProductReviews />} />
