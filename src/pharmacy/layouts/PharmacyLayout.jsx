@@ -10,7 +10,7 @@ const PharmacyLayout = () => {
       <Navbar />
 
       {/* Content will grow and push the footer down */}
-      <main className="flex-grow">
+      <main className="flex-grow px-4 py-8">
         <Outlet />
       </main>
 

@@ -13,6 +13,7 @@ import ProductDetail from "../components/ProductDetail";
 import { Navigate } from "react-router-dom";
 import ProductReviews from "../pages/products/ProductReviews";
 import Forum from "../pages/forum/forum";
+import RegisterPage from "../pages/login/Register";
 
 const PharmacyRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const PharmacyRoutes = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/cart" element={<ShoppingCartPage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/aboutUs" element={<AboutUsPage />} />
