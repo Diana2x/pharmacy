@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { FaShippingFast, FaCreditCard } from "react-icons/fa"; // Importar íconos
-import { getProducts } from "@/api/products/apiProducts";
+import React, { useState } from "react";
+import { FaShippingFast, FaCreditCard } from "react-icons/fa";
+import { useCart } from "../../../context/CartContext";
 
 const ShoppingCart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const {
+    cartItems,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+    clearCart,
+  } = useCart();
+
   const [shippingAddress, setShippingAddress] = useState({
     country: "México",
     state: "",
@@ -13,54 +20,16 @@ const ShoppingCart = () => {
     phone: "",
     postalCode: "",
   });
+
   const [paymentMethod, setPaymentMethod] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cardExpiry, setCardExpiry] = useState("");
   const [cardCvc, setCardCvc] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    getProducts()
-      .then((data) => {
-        const items = data.slice(0, 2).map((item) => ({
-          ...item,
-          quantity: item.quantity || 1,
-        }));
-        setCartItems(items);
-      })
-      .catch(() => {
-        setError("No se pudieron cargar los productos");
-      })
-      .finally(() => setIsLoading(false));
-  }, []);
-
-  const handleIncreaseQuantity = (id) => {
-    const updatedItems = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-    );
-    setCartItems(updatedItems);
-  };
-
-  const handleDecreaseQuantity = (id) => {
-    const updatedItems = cartItems.map((item) =>
-      item.id === id && item.quantity > 1
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    );
-    setCartItems(updatedItems);
-  };
-
-
-
-  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     if (name in shippingAddress) {
-      setShippingAddress({
-        ...shippingAddress,
-        [name]: value,
-      });
+      setShippingAddress((prev) => ({ ...prev, [name]: value }));
     } else {
       switch (name) {
         case "paymentMethod":
@@ -83,21 +52,25 @@ const ShoppingCart = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (
-      !shippingAddress.country ||
-      !shippingAddress.state ||
-      !shippingAddress.street ||
-      !shippingAddress.number ||
-      !shippingAddress.neighborhood ||
-      !shippingAddress.phone ||
-      !shippingAddress.postalCode ||
-      !paymentMethod ||
-      !cardNumber ||
-      !cardExpiry ||
-      !cardCvc
-    ) {
-      alert("Por favor, complete todos los campos.");
+
+    // Validar dirección
+    const isShippingValid = Object.values(shippingAddress).every((val) => val.trim() !== "");
+    if (!isShippingValid) {
+      alert("Por favor, complete todos los campos de dirección.");
       return;
+    }
+
+    // Validar método de pago
+    if (!paymentMethod) {
+      alert("Por favor, seleccione un método de pago.");
+      return;
+    }
+
+    if (paymentMethod === "creditCard") {
+      if (!cardNumber || !cardExpiry || !cardCvc) {
+        alert("Por favor, complete los datos de la tarjeta.");
+        return;
+      }
     }
 
     console.log("Pedido enviado:", {
@@ -110,7 +83,9 @@ const ShoppingCart = () => {
     });
 
     alert("¡Pedido realizado con éxito!");
-    setCartItems([]);
+    clearCart();
+
+    // Resetear formulario
     setShippingAddress({
       country: "México",
       state: "",
@@ -126,17 +101,8 @@ const ShoppingCart = () => {
     setCardCvc("");
   };
 
-  if (isLoading) {
-    return <p className="text-center text-xl">Cargando productos...</p>;
-  }
-
-  if (error) {
-    return <p className="text-center text-xl text-red-500">{error}</p>;
-  }
-
   const totalPrice = cartItems.reduce(
-    (total, item) =>
-      total + (parseFloat(item.price) || 0) * (item.quantity || 0),
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
@@ -160,23 +126,22 @@ const ShoppingCart = () => {
                   <h3 className="text-xl font-semibold">{item.name}</h3>
                   <p className="text-gray-500">Precio: ${item.price}</p>
                 </div>
-
                 <div className="flex items-center space-x-2 ml-auto">
                   <button
-                    onClick={() => handleIncreaseQuantity(item.id)}
+                    onClick={() => increaseQuantity(item.id)}
                     className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                   >
                     +
                   </button>
                   <p className="text-lg">{item.quantity}</p>
                   <button
-                    onClick={() => handleDecreaseQuantity(item.id)}
+                    onClick={() => decreaseQuantity(item.id)}
                     className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                   >
                     -
                   </button>
                   <button
-                    // onClick={() => handleDeleteItem(item.id)}
+                    onClick={() => removeFromCart(item.id)}
                     className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
                   >
                     Eliminar
@@ -193,151 +158,47 @@ const ShoppingCart = () => {
         </div>
       )}
 
-      <div className="mt-8 flex flex-col md:flex-row gap-8">
+      
+      <form onSubmit={handleSubmit} className="mt-8 flex flex-col md:flex-row gap-8">
         <div className="flex-1">
           <h3 className="text-2xl font-semibold mb-4 flex items-center">
-            <FaShippingFast className="mr-2 text-green-600" /> Información de
-            Envío
+            <FaShippingFast className="mr-2 text-green-600" /> Información de Envío
           </h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="flex flex-col">
-              <label
-                htmlFor="country"
-                className="text-lg font-medium text-gray-700"
-              >
-                País:
-              </label>
-              <input
-                type="text"
-                id="country"
-                name="country"
-                value={shippingAddress.country}
-                onChange={handleInputChange}
-                className="px-4 py-2 border border-gray-300 rounded-md"
-                placeholder="Ingresa tu país"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label
-                htmlFor="state"
-                className="text-lg font-medium text-gray-700"
-              >
-                Estado:
-              </label>
-              <input
-                type="text"
-                id="state"
-                name="state"
-                value={shippingAddress.state}
-                onChange={handleInputChange}
-                className="px-4 py-2 border border-gray-300 rounded-md"
-                placeholder="Ingresa tu estado"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label
-                htmlFor="neighborhood"
-                className="text-lg font-medium text-gray-700"
-              >
-                Colonia:
-              </label>
-              <input
-                type="text"
-                id="neighborhood"
-                name="neighborhood"
-                value={shippingAddress.neighborhood}
-                onChange={handleInputChange}
-                className="px-4 py-2 border border-gray-300 rounded-md"
-                placeholder="Ingresa tu colonia"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label
-                htmlFor="street"
-                className="text-lg font-medium text-gray-700"
-              >
-                Calle:
-              </label>
-              <input
-                type="text"
-                id="street"
-                name="street"
-                value={shippingAddress.street}
-                onChange={handleInputChange}
-                className="px-4 py-2 border border-gray-300 rounded-md"
-                placeholder="Ingresa tu calle"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label
-                htmlFor="number"
-                className="text-lg font-medium text-gray-700"
-              >
-                Número:
-              </label>
-              <input
-                type="text"
-                id="number"
-                name="number"
-                value={shippingAddress.number}
-                onChange={handleInputChange}
-                className="px-4 py-2 border border-gray-300 rounded-md"
-                placeholder="Ingresa tu número"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label
-                htmlFor="phone"
-                className="text-lg font-medium text-gray-700"
-              >
-                Teléfono:
-              </label>
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                value={shippingAddress.phone}
-                onChange={handleInputChange}
-                className="px-4 py-2 border border-gray-300 rounded-md"
-                placeholder="Ingresa tu número de teléfono"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label
-                htmlFor="postalCode"
-                className="text-lg font-medium text-gray-700"
-              >
-                Código Postal:
-              </label>
-              <input
-                type="text"
-                id="postalCode"
-                name="postalCode"
-                value={shippingAddress.postalCode}
-                onChange={handleInputChange}
-                className="px-4 py-2 border border-gray-300 rounded-md"
-                placeholder="Ingresa tu código postal"
-              />
-            </div>
-          </form>
+          <div className="space-y-4">
+            {[
+              { name: "country", label: "País" },
+              { name: "state", label: "Estado" },
+              { name: "neighborhood", label: "Colonia" },
+              { name: "street", label: "Calle" },
+              { name: "number", label: "Número" },
+              { name: "phone", label: "Teléfono" },
+              { name: "postalCode", label: "Código Postal" },
+            ].map(({ name, label }) => (
+              <div className="flex flex-col" key={name}>
+                <label htmlFor={name} className="text-lg font-medium text-gray-700">
+                  {label}:
+                </label>
+                <input
+                  type="text"
+                  id={name}
+                  name={name}
+                  value={shippingAddress[name]}
+                  onChange={handleInputChange}
+                  className="px-4 py-2 border border-gray-300 rounded-md"
+                  placeholder={`Ingresa tu ${label.toLowerCase()}`}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="flex-1">
           <h3 className="text-2xl font-semibold mb-4 flex items-center">
             <FaCreditCard className="mr-2 text-green-600" /> Método de Pago
           </h3>
-          <form className="space-y-4">
+          <div className="space-y-4">
             <div className="flex flex-col">
-              <label
-                htmlFor="paymentMethod"
-                className="text-lg font-medium text-gray-700"
-              >
+              <label htmlFor="paymentMethod" className="text-lg font-medium text-gray-700">
                 Método de Pago:
               </label>
               <select
@@ -356,10 +217,7 @@ const ShoppingCart = () => {
             {paymentMethod === "creditCard" && (
               <>
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="cardNumber"
-                    className="text-lg font-medium text-gray-700"
-                  >
+                  <label htmlFor="cardNumber" className="text-lg font-medium text-gray-700">
                     Número de Tarjeta:
                   </label>
                   <input
@@ -374,10 +232,7 @@ const ShoppingCart = () => {
                 </div>
 
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="cardExpiry"
-                    className="text-lg font-medium text-gray-700"
-                  >
+                  <label htmlFor="cardExpiry" className="text-lg font-medium text-gray-700">
                     Fecha de Expiración:
                   </label>
                   <input
@@ -392,10 +247,7 @@ const ShoppingCart = () => {
                 </div>
 
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="cardCvc"
-                    className="text-lg font-medium text-gray-700"
-                  >
+                  <label htmlFor="cardCvc" className="text-lg font-medium text-gray-700">
                     CVC:
                   </label>
                   <input
@@ -410,11 +262,15 @@ const ShoppingCart = () => {
                 </div>
               </>
             )}
-          </form>
+          </div>
         </div>
-      </div>
+
+        
+      </form>
 
       <button
+        type="submit"
+        form="checkout-form"
         onClick={handleSubmit}
         className="mt-6 px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 w-full"
       >
