@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import StarRating from "./StarRating";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useContext(CartContext);
+
   const settings = {
-    dots: true, // Muestra los puntos de paginación
-    infinite: true, // Desliza infinitamente
-    speed: 500, // Velocidad de deslizamiento
-    slidesToShow: 1, // Muestra una imagen por vez
-    slidesToScroll: 1, // Desliza una imagen por vez
-    autoplay: false, // Activa el deslizamiento automático
-    autoplaySpeed: 3000, // Intervalo entre deslizamientos (en ms)
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product);
   };
 
   return (
@@ -57,7 +65,10 @@ const ProductCard = ({ product }) => {
         >
           Ver más
         </Link>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm sm:text-base">
+        <button
+          onClick={handleAddToCart}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 text-sm sm:text-base"
+        >
           Añadir al carrito
         </button>
       </div>
