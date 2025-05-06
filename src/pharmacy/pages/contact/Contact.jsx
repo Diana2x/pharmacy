@@ -27,12 +27,14 @@ const Contact = () => {
 
   return (
     <div className="flex flex-col w-full p-4 gap-6 bg-gray-100">
-      {/* CONTENEDOR PRINCIPAL DE CONTACTO */}
-      <div className="flex flex-col items-center justify-center mx-auto sm:flex-col lg:flex-row md:flex-col container m-10 max-h-[600px] gap-8">
-        <div className="flex flex-col items-start justify-center w-full h-full border-2 rounded-lg border-green-500 p-6 gap-6 bg-white shadow-md">
+      {/* CONTENEDOR PRINCIPAL */}
+      <div className="flex flex-col lg:flex-row container mx-auto p-4 md:p-8 gap-8">
+        
+        {/* INFO DE CONTACTO */}
+        <div className="flex flex-col w-full gap-6 border-2 rounded-lg border-green-500 p-4 sm:p-6 bg-white shadow-md">
           {/* CORPORATIVO */}
-          <div className="info-box flex items-center gap-4 bg-green-50 p-4 rounded-md shadow w-full">
-            <div className="iconos text-green-600 text-3xl">
+          <div className="info-box flex flex-col sm:flex-row items-start gap-4 bg-green-50 p-4 rounded-md shadow w-full">
+            <div className="text-green-600 text-3xl">
               <FaMapMarkerAlt />
             </div>
             <div>
@@ -43,9 +45,9 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* TELÉFONO */}
-          <div className="info-box flex items-center gap-4 bg-yellow-50 p-4 rounded-md shadow w-full">
-            <div className="iconos text-yellow-600 text-3xl">
+          {/* TELÉFONOS */}
+          <div className="info-box flex flex-col sm:flex-row items-start gap-4 bg-yellow-50 p-4 rounded-md shadow w-full">
+            <div className="text-yellow-600 text-3xl">
               <FaPhoneAlt />
             </div>
             <div>
@@ -58,24 +60,24 @@ const Contact = () => {
           </div>
 
           {/* REDES SOCIALES */}
-          <div className="info-box flex flex-col gap-2 bg-green-50 p-4 rounded-md shadow w-full">
+          <div className="info-box flex flex-col gap-4 bg-green-50 p-4 rounded-md shadow w-full">
             <h3 className="text-lg font-semibold text-black-800">REDES SOCIALES</h3>
             <div className="flex gap-4 items-center">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
-                <FaFacebook size={35} />
+                <FaFacebook size={30} />
               </a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-black-400 hover:text-blue-500">
-                <FaXTwitter size={35} />
+                <FaXTwitter size={30} />
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-600">
-                <FaInstagram size={35} />
+                <FaInstagram size={30} />
               </a>
             </div>
           </div>
 
           {/* CORREO */}
-          <div className="info-box flex items-center gap-4 bg-yellow-50 p-4 rounded-md shadow w-full">
-            <div className="iconos text-yellow-600 text-3xl">
+          <div className="info-box flex flex-col sm:flex-row items-start gap-4 bg-yellow-50 p-4 rounded-md shadow w-full">
+            <div className="text-yellow-600 text-3xl">
               <FaEnvelope />
             </div>
             <div>
@@ -90,9 +92,9 @@ const Contact = () => {
         </div>
 
         {/* FORMULARIO */}
-        <div className="flex items-center justify-center w-full h-full border-2 rounded-lg border-green-500 p-6 bg-white shadow-md">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-10 w-full">
-            <h2 className="text-3xl font-bold text-green-600 mb-4 text-center">Contáctenos</h2>
+        <div className="flex items-center justify-center w-full border-2 rounded-lg border-green-500 p-4 sm:p-6 bg-white shadow-md">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
+            <h2 className="text-2xl sm:text-3xl font-bold text-green-600 text-center">Contáctenos</h2>
             <input
               type="text"
               name="nombre"
@@ -137,5 +139,7 @@ const Contact = () => {
     </div>
   );
 };
+
+
 
 export default Contact;
