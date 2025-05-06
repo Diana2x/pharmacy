@@ -1,13 +1,12 @@
 // src/authService.js
 
-import { auth, db } from "./firebase"; // Adjust the path if needed
+import { auth, db } from "./firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
-// Function to register a user and store extra info in Firestore
 export const register = async (email, password, name, apellido) => {
   const userCredential = await createUserWithEmailAndPassword(
     auth,
@@ -16,7 +15,6 @@ export const register = async (email, password, name, apellido) => {
   );
   const user = userCredential.user;
 
-  // Save additional user data in Firestore under "users" collection
   await setDoc(doc(db, "users", user.uid), {
     uid: user.uid,
     email,
