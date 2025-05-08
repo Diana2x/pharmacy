@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { getProducts, getProductById } from "../../api/products/apiProducts";
 import StarRating from "./StarRating";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { FaShoppingCart } from "react-icons/fa";
+
 
 const ProductDetail = () => {
   const { id } = useParams(); // Get the product ID from the URL params
@@ -10,7 +14,11 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
+const handleAddToCart = () => {
+  addToCart(product);
+};
   useEffect(() => {
     // Fetch related products (first 5)
     getProducts()
@@ -84,9 +92,13 @@ const ProductDetail = () => {
               Precio: ${product.price}
             </div>
 
-            <button className="py-2 px-6 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300 mb-4">
-              Añadir al carrito
-            </button>
+            <button
+  onClick={handleAddToCart}
+  className="flex justify-center items-center py-2 w-full text-sm font-medium text-white bg-green-500 rounded-md transition-colors duration-300 hover:bg-green-600 mb-4"
+>
+  <FaShoppingCart className="mr-2 w-4 h-4" />
+  Añadir al carrito
+</button>
 
             <a href="/" className="text-sm text-blue-600 hover:underline">
               Regresar a la tienda
