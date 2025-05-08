@@ -18,9 +18,18 @@ const StarRating = ({ averageRating, totalReviews, productId }) => {
   return (
     <div className="flex items-center group">
       <div className="flex">{stars}</div>
-      <span className="ml-2 text-gray-600 text-sm">
-        ({totalReviews} reviews)
-      </span>
+      {productId ? (
+        <Link 
+          to={`/product/${productId}/reviews`} 
+          className="ml-2 text-gray-600 text-sm hover:text-green-600 hover:underline transition-colors"
+        >
+          ({totalReviews} reviews)
+        </Link>
+      ) : (
+        <span className="ml-2 text-gray-600 text-sm">
+          ({totalReviews} reviews)
+        </span>
+      )}
     </div>
   );
 };
