@@ -16,6 +16,7 @@ import Forum from "../pages/forum/forum";
 import RegisterPage from "../pages/login/Register";
 import AdminPage from "../pages/admin/AdminPage";
 import { PrivateRoute } from "../components/PrivateRoute";
+import SearchResults from "../pages/search/SearchResults";
 
 const PharmacyRoutes = () => {
   return (
@@ -43,6 +44,8 @@ const PharmacyRoutes = () => {
       {/* Product detail route should be placed before the fallback route */}
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/product/:id/reviews" element={<ProductReviews />} />
+      {/* Search route */}
+      <Route path="/search" element={<SearchResults />} />
       {/* Fallback route */}
       <Route path="*" element={<Navigate to={"/"} replace />} />
     </Routes>
